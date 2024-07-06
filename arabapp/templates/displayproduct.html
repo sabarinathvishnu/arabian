@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="table-responsive">
+                      <table class="table table-dark">
+                        <thead>
+                          <tr>
+                            <th>CATEGORY NAME </th>
+                            <th> DESCRIPTION </th>
+                            <th> PRODUCT IMAGE </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in data %}
+                          <tr>
+                            <td>{{i.categoryname}}</td>
+                            <td>{{i.descrption}} </td>
+                            <td>
+                                <img src="{{i.product_image.url}}" width="10px" height="10px">
+                            </td>
+                              <td>
+                                  <a href="{% url 'edit_product' pid=i.id %}">
+
+                                      <button type="submit">EDIT</button>
+                                  </a>
+                                  </a>
+                                    <a href="{% url 'delete_product' pid=i.id %}" >
+                                      <button type="submit">DELETE</button>
+                                  </a>
+
+
+
+                              </td>
+
+                          </tr>
+                        {% endfor %}
+
+                        </tbody>
+                      </table>
+                    </div>
+</body>
+</html>
+{% endblock %}
